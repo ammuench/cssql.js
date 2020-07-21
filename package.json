@@ -1,0 +1,74 @@
+{
+  "name": "csssql.js",
+  "version": "0.0.1",
+  "description": "a stupid mistake / CSS to SQL conversion library",
+  "license": "UNLICENSE",
+  "repository": "",
+  "author": "Alex Muench",
+  "keywords": [
+    "bad idea",
+    "css",
+    "sql",
+    "why god why",
+    "stupid",
+    "dumb",
+    "affront to god"
+  ],
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn pq:stage",
+      "pre-push": "yarn test"
+    }
+  },
+  "scripts": {
+    "build": "yarn clean && yarn lint && echo Using TypeScript && tsc --version && tsc --pretty",
+    "build:watch": "yarn build --watch",
+    "clean": "rimraf dist",
+    "coverage": "nyc --include='src/**/*.ts' --reporter=text --reporter=html --reporter=lcov mocha --require ts-node/register --recursive 'test/**/*.spec.ts'",
+    "lint": "pretty-quick",
+    "pq:stage": "pretty-quick --staged",
+    "test": "yarn build && mocha  -r ts-node/register --recursive 'test/**/*.spec.ts'",
+    "test:watch": "yarn test --watch",
+    "start": "node dist/index.js"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.0",
+    "@types/mocha": "^7.0.1",
+    "@types/node": "^13.7.4",
+    "@types/sinon": "^7.0.13",
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.2",
+    "husky": "^4.2.3",
+    "mocha": "^7.0.1",
+    "nyc": "^15.0.0",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
+    "rimraf": "^3.0.2",
+    "sinon": "^9.0.0",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.8.2"
+  },
+  "engines": {
+    "node": ">=10.16.0"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*"
+    ],
+    "exclude": [
+      "dist"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "reporter": [],
+    "all": true
+  }
+}
