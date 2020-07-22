@@ -1,7 +1,7 @@
 import * as knex from "knex";
 import { CONFIG_IDS } from "./enums/config.enum";
 
-export class CSSql {
+class CSSql {
   private _parentRef: HTMLElement;
   private _config: knex.Config;
 
@@ -20,16 +20,19 @@ export class CSSql {
   }
 
   get config(): any {
-    return this.config;
+    return this._config;
   }
 
   private _getStyleValue(elem: Element, queryTarget: string): string {
     try {
       const htmlElement: HTMLElement = elem.querySelector(queryTarget);
-      return htmlElement.style.content;
+      const rawVal = htmlElement.style.content;
+      return rawVal.split('"')[1];
     } catch (e) {
       console.error(e);
       return null;
     }
   }
 }
+
+export { CSSql, CONFIG_IDS };
