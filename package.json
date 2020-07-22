@@ -1,5 +1,5 @@
 {
-  "name": "csssql.js",
+  "name": "cssql.js",
   "version": "0.0.1",
   "description": "a stupid mistake / CSS to SQL conversion library",
   "license": "UNLICENSE",
@@ -70,5 +70,8 @@
     ],
     "reporter": [],
     "all": true
+  },
+  "dependencies": {
+    "knex": "^0.21.2"
   }
 }
