@@ -72,6 +72,6 @@
     "all": true
   },
   "dependencies": {
-    "knex": "^0.21.2"
+    "knex": "^2.4.0"
   }
 }
